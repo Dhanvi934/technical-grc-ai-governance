@@ -21,7 +21,7 @@ Most GRC material stops at the policy. I'm interested in the next question: *wha
 
 If you only have a few minutes:
 
-1. **[Agentic AI Is an Identity Problem](./articles/05-agentic-ai-is-an-identity-problem.md)** is my most developed piece so far. It covers why autonomous AI agents are best understood as non-human identities, and where existing frameworks fit them and where they don't.
+1. **[Agentic AI Is an Identity Problem](/articles/05-agentic ai-nhi.md)** is my most developed piece so far. It covers why autonomous AI agents are best understood as non-human identities, and where existing frameworks fit them and where they don't.
 2. **[02: Agentic AI and non-human identities](./learnings/02-agentic-ai-and-nhis.md)** is the study-note version of that article.
 3. **[03: SIEM, SOAR and telemetry](./learnings/03-siem-soar-telemetry.md)** covers how continuous monitoring and incident response work in practice, using Microsoft Sentinel as the example.
 
