@@ -12,7 +12,7 @@ Most GRC material stops at the policy. I'm interested in the next question: *wha
 
 | Folder | What you'll find |
 |---|---|
-| [`/about`](./about) | Why I'm focused on technical GRC and AI governance, and what I'm working toward ([philosophy-and-goals.md](./about/philosophy-and-goals.md)) |
+| [`/about`](./about) | Why I'm focused on technical GRC and AI governance, and what I'm working toward ([philosophy-and-goals.md](about/philosophy.md)) |
 | [`/learnings`](./learnings) | My structured study notes and framework mappings, one topic per file |
 | [`/projects`](./projects) | Applied, hands-on GRC projects. Added one at a time as I finish them |
 | [`/articles`](./articles) | Markdown copies of the pieces I publish on Substack |
