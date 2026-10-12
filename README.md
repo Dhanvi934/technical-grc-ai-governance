@@ -21,13 +21,15 @@ Most GRC material stops at the policy. I'm interested in the next question: *wha
 
 If you only have a few minutes:
 
-1. **[Agentic AI Is an Identity Problem](/articles/05-agentic ai-nhi.md)** is my most developed piece so far. It covers why autonomous AI agents are best understood as non-human identities, and where existing frameworks fit them and where they don't.
-2. **[02: Agentic AI and non-human identities](./learnings/02-agentic-ai-and-nhis.md)** is the study-note version of that article.
-3. **[03: SIEM, SOAR and telemetry](./learnings/03-siem-soar-telemetry.md)** covers how continuous monitoring and incident response work in practice, using Microsoft Sentinel as the example.
+1. **[Agentic AI Is an Identity Problem](/learnings/05-agentic-ai-nhi.md)** is my most developed piece so far. It covers why autonomous AI agents are best understood as non-human identities, and where existing frameworks fit them and where they don't.
+2. **[03: The EU's three cybersecurity laws](/learnings/03-eu-cra-nis2-dora.md)** is the clearest example of regulation designed as a system.
+3. **[03: SIEM, SOAR and telemetry](/learnings/07-siem-soar-telemetry.md)** covers how continuous monitoring and incident response work in practice, using Microsoft Sentinel as the example.
+4. **[04: India's layered cyber governance](./learnings/04-india-layered-cyber-governance.md)** is the one to read if you work with Indian clients or vendors.
+
 
 ## Topics I cover
 
-- **Cloud security and compliance foundations:** shared responsibility, Zero Trust, identity, and the Microsoft security and compliance stack (I'm currently studying for the SC-900 exam)
+- **Cloud security and compliance foundations:** shared responsibility, Zero Trust, identity, and the Microsoft security and compliance stack
 - **AI governance:** agentic AI risk, non-human identities, the OWASP Agentic Top 10, and how NIST AI RMF, ISO/IEC 27001, SOC 2 and the EU AI Act relate to them
 - **Security operations as evidence:** SIEM and SOAR, logging and monitoring, and incident response mapped to audit requirements
 - **Regional regulation:** how cyber and data governance is layered in India and how it applies to businesses serving foreign clients
