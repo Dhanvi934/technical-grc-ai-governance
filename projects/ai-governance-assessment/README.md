@@ -67,15 +67,6 @@ A high mapped count in a design document shows the design was thought through ag
 - **NIST AI RMF gaps:** engagement with affected people (MAP 5.2), sustaining value (MANAGE 2.2), environmental impact (MEASURE 2.12), human-subject evaluations (MEASURE 2.2), fairness and bias evaluation (MEASURE 2.11), and the business-case items (MAP 1.4, MAP 3.1).
 - **The base architecture** follows a common multi-agent reference pattern; credit its source if you reuse a diagram.
 
-## Reproduce
-
-```bash
-python tools/validate.py        # cross-reference checks and coverage numbers
-python tools/build.py .         # regenerates the tables and documents from the data files
-python tools/gen_figs.py images # regenerates the figures (needs Playwright with Chromium)
-```
-
-Edit `tools/data_core.py`, `data_iso.py` or `data_nist.py` to change content, then rebuild. The `.md` files here are generated; edits made directly to them will be overwritten.
 
 ## Sources
 
