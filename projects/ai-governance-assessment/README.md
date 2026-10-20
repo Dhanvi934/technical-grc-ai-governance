@@ -1,83 +1,42 @@
 # Project 1: AI Governance Assessment for a Customer-Facing AI Agent
 
-A design-level compliance assessment for an AI agent system: **what would it take for an agentic customer-service system to line up with ISO/IEC 27001, the EU AI Act and the NIST AI RMF, and how would you prove it?**
+How would an AI agent system line up with **ISO/IEC 27001, the EU AI Act and the NIST AI RMF**, and how would you prove it?
 
-
-## The scenario
-
-**Halden Assist** is a customer-facing chat agent at **Halden Financial Services (fictional)**, a regulated firm with EU customers. It answers questions, reads the customer's own data and performs bounded service actions through specialist agents and tool servers. Full profile in [01-system-profile.md](./01-system-profile.md).
 
 ![Architecture](./images/01-architecture-component-ids.png)
 
-## What is in this project
+## Summary
 
-| File | What it is |
-|---|---|
-| [01-system-profile.md](./01-system-profile.md) | Scope, roles, data, components (C1 to C16), data flows, trust boundaries, assumptions |
-| [02-eu-ai-act-classification.md](./02-eu-ai-act-classification.md) | Why the agent is not high-risk under the EU AI Act, which duties still bind it, and what would change the answer |
-| [03-control-matrix.md](./03-control-matrix.md) | The matrix: 46 guardrails mapped to ISO 27001 Annex A, EU AI Act articles, NIST AI RMF subcategories and the OWASP Agentic Top 10 |
-| [03a ISO 27001 Statement of Applicability](./03a-iso-27001-statement-of-applicability.md) | All 93 Annex A controls: included, inherited or excluded, with reasons |
-| [03b EU AI Act applicability](./03b-eu-ai-act-applicability.md) | Article-by-article: applies, design target, conditional, not applicable |
-| [03c NIST AI RMF applicability](./03c-nist-ai-rmf-applicability.md) | All 72 subcategories, with stated gaps |
-| [04-guardrails-specification.md](./04-guardrails-specification.md) | Each guardrail: what it does, where it is enforced, evidence, test; illustrative configuration |
-| [05-risk-register.md](./05-risk-register.md) | 20 risks and threat model with inherent and residual scores and heat maps |
-| [data/](./data) | The same tables as CSV |
+- **Problem:** AI agents act on their own (read data, call tools, change records), and none of the three frameworks was written with that in mind.
+- **What I did:** designed the controls for a customer-service agent at a fictional EU-facing firm. I wrote 46 guardrails first, then mapped each to the frameworks and to the OWASP agent risks, with a reason for every exclusion.
+- **What I found:** the agent is not high-risk under the EU AI Act as long as it never makes credit or insurance decisions, so that scope line is itself a compliance control. The controls that matter most (authorisation against the user, action tiers, human approval, audit logging) sit outside the model.
+- **Not done:** building or testing it. Project 2 implements the core guardrails as tested code.
+
+## Read in this order (about 10 minutes)
+
+| # | File | What you get |
+|---|---|---|
+| 1 | [01-system-and-scope.md](./01-system-and-scope.md) | The system, what it may and may not do, one request end to end |
+| 2 | [02-eu-ai-act-classification.md](./02-eu-ai-act-classification.md) | Why it is not high-risk, and what would change that |
+| 3 | [03-core-control-matrix.md](./03-core-control-matrix.md) | The 12 core guardrails mapped to the three frameworks, plus coverage |
+| 4 | [04-risk-summary.md](./04-risk-summary.md) | 20 risks with before and after heat maps |
 
 
+Everything else is in [`reference/`](./reference): the full ISO 27001 Statement of Applicability (all 93 controls), EU AI Act and NIST AI RMF applicability tables, all guardrails with evidence and tests, and the full risk register. The same tables are in [`data/`](./data) as CSV.
 
-## Results at a glance
+## Results
 
 | Measure | Result |
 |---|---|
-| Guardrails | 46, in 8 layers, each with evidence and a test |
-| ISO/IEC 27001:2022 Annex A | 74 of 93 controls have agent-specific guardrails; 8 apply as baseline ISMS; 8 inherited from providers; 3 excluded with reasons |
-| NIST AI RMF 1.0 | 64 of 72 subcategories mapped; 7 stated gaps; 1 organisation-level |
-| EU AI Act | Not high-risk (scope excludes Annex III 5(b) and 5(c)); Art 50(1) disclosure, Art 4 literacy and Art 5 checks apply; Arts 9 to 15 and deployer practice adopted as design targets |
-| OWASP Agentic Top 10 | 10 of 10 risks covered by guardrails and by the risk register |
-| Risk register | 20 risks: inherent 13 high and 7 medium; residual target 11 medium and 9 low if guardrails work as specified |
+| Guardrails | 46, each with evidence and a test |
+| ISO 27001 Annex A | 74 of 93 mapped; 8 baseline, 8 inherited, 3 excluded with reasons |
+| NIST AI RMF | 64 of 72 mapped; 7 stated gaps |
+| EU AI Act | Not high-risk if scope holds; Art 50(1) disclosure, Art 4 and Art 5 apply; Arts 9 to 15 adopted as design targets |
+| Risk | Inherent 13 high, 7 medium; residual target 11 medium, 9 low |
 
 
-A high mapped count in a design document shows the design was thought through against the frameworks. It does not show the controls work. The test column in each guardrail says what would have to be demonstrated.
-
-## How I built it
-
-1. **Start from the architecture, not the frameworks.** The components are numbered (C1 to C16).
-2. **Write guardrails first.** Each is a thing the system does, with a component, evidence and a test. Reasoning: frameworks do not describe agents, so I wrote the agent controls myself and then asked which framework requirements each one supports.
-3. **Map outward.** Each guardrail lists the ISO Annex A controls, EU AI Act articles and NIST subcategories it contributes to, and the OWASP agent risk it reduces.
-4. **Do the exclusions honestly.** Every ISO and NIST item that is not covered by a guardrail is listed with a status and a reason.
-5. **Generate and check.** All tables come from one data source. A validation script checks that every referenced ID exists, every risk has a guardrail, and no excluded control is also mapped.
-
-## Design principles
-
-- Enforce outside the model: authorisation, limits and network rules live in code, not in a prompt.
-- Authorise against the user: the agent never has more rights than the customer.
-- One identity per agent, short-lived scoped credentials.
-- Tier every action: alone, with confirmation, or with a person's approval.
-- Log so an incident can be reconstructed.
-
-## Limitations and known gaps
-
-- **Nothing is implemented or tested.** Status of every guardrail is *Designed*; residual risk scores are targets, not results.
-- **The scores are my judgement** on a 1 to 5 scale for a hypothetical system.
-- **"Mapped" means contributes toward, not satisfies.** ISO controls are met by the whole management system.
-- **ISO management-system clauses (4 to 10)** are not assessed; only Annex A.
-- **ISO 27001 text is not reproduced.** Titles are official; descriptions are my words.
-- **Dates and Omnibus changes** to the EU AI Act come from secondary sources and should be checked against the Official Journal. The Art 50(2) question is open.
-- **Not covered, by design:** GDPR, DORA and NIS2 (noted in 02); ISO/IEC 42001 (the AI management-system standard).
-- **NIST AI RMF gaps:** engagement with affected people (MAP 5.2), sustaining value (MANAGE 2.2), environmental impact (MEASURE 2.12), human-subject evaluations (MEASURE 2.2), fairness and bias evaluation (MEASURE 2.11), and the business-case items (MAP 1.4, MAP 3.1).
-- **The base architecture** follows a common multi-agent reference pattern; credit its source if you reuse a diagram.
+- GDPR, DORA, NIS2 and ISO/IEC 42001 are out of scope. NIST gaps are listed in [reference D](./reference/D-nist-ai-rmf-applicability.md).
 
 
-## Sources
-
-- ISO/IEC 27001:2022: https://www.iso.org/standard/27001
-- EU AI Act, Regulation (EU) 2024/1689: https://eur-lex.europa.eu/eli/reg/2024/1689/oj
-- NIST AI Risk Management Framework 1.0: https://www.nist.gov/itl/ai-risk-management-framework
-- OWASP Top 10 for Agentic Applications 2026: https://genai.owasp.org/
-
-## Related notes in this portfolio
-
-- [05: Agentic AI and non-human identities](../../learnings/05-agentic-ai-and-nhis.md) is the argument behind the identity and monitoring guardrails.
-- [03: The EU's three cybersecurity laws](../../learnings/03-eu-cra-nis2-dora.md) covers DORA and NIS2, which sit next to the AI Act for a financial firm.
-
+Sources: [ISO/IEC 27001:2022](https://www.iso.org/standard/27001) · [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) · [OWASP GenAI](https://genai.owasp.org/)
 
