@@ -1,6 +1,6 @@
 # Project 1: AI Governance Assessment for a Customer-Facing AI Agent
 
-How would an AI agent system line up with **ISO/IEC 27001, the EU AI Act and the NIST AI RMF**, and how would you prove it?
+How would an AI agent system line up with **ISO/IEC 42001, the EU AI Act and the NIST AI RMF**, and how would you prove it?
 
 
 ![Architecture](./images/01-architecture-component-ids.png)
@@ -22,21 +22,19 @@ How would an AI agent system line up with **ISO/IEC 27001, the EU AI Act and the
 | 4 | [04-risk-summary.md](./04-risk-summary.md) | 20 risks with before and after heat maps |
 
 
-Everything else is in [`reference/`](./reference): the full ISO 27001 Statement of Applicability (all 93 controls), EU AI Act and NIST AI RMF applicability tables, all guardrails with evidence and tests, and the full risk register. The same tables are in [`data/`](./data) as CSV.
+Everything else is in [`reference/`](./reference): ISO 42001 applicability (all 38 Annex A controls), an optional ISO 27001 mapping appendix, EU AI Act and NIST AI RMF applicability tables, all guardrails with evidence and tests, and the full risk register. The same tables are in [`data/`](./data) as CSV.
 
 ## Results
 
 | Measure | Result |
 |---|---|
 | Guardrails | 46, each with evidence and a test |
-| ISO 27001 Annex A | 74 of 93 mapped; 8 baseline, 8 inherited, 3 excluded with reasons |
+| ISO 42001 Annex A | 35 of 38 mapped; 2 organisation-level, 1 excluded with reason |
 | NIST AI RMF | 64 of 72 mapped; 7 stated gaps |
 | EU AI Act | Not high-risk if scope holds; Art 50(1) disclosure, Art 4 and Art 5 apply; Arts 9 to 15 adopted as design targets |
 | Risk | Inherent 13 high, 7 medium; residual target 11 medium, 9 low |
 
 
-- GDPR, DORA, NIS2 and ISO/IEC 42001 are out of scope. NIST gaps are listed in [reference D](./reference/D-nist-ai-rmf-applicability.md).
 
-
-Sources: [ISO/IEC 27001:2022](https://www.iso.org/standard/27001) · [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) · [OWASP GenAI](https://genai.owasp.org/)
+Sources: ISO/IEC 42001:2023 (paid standard; see iso.org) · [EU AI Act](https://eur-lex.europa.eu/eli/reg/2024/1689/oj) · [NIST AI RMF](https://www.nist.gov/itl/ai-risk-management-framework) · [OWASP GenAI](https://genai.owasp.org/)
 
