@@ -1,11 +1,12 @@
 # Reference
 
-Full details behind the short documents in the project root. Generated from the same data as the CSVs in [`../data`](../data).
+Full detail behind the short documents in the project root. Generated from the same data as the CSVs in [`../data`](../data).
 
 | File | Contents |
 |---|---|
 | [A-full-guardrail-crosswalk.md](./A-full-guardrail-crosswalk.md) | All 46 guardrails against the three frameworks and OWASP |
-| [B-iso-27001-statement-of-applicability.md](./B-iso-27001-statement-of-applicability.md) | All 93 Annex A controls: included, inherited or excluded, with reasons |
+| [B-iso-27001-statement-of-applicability.md](./B-iso-27001-statement-of-applicability.md) | Optional appendix: all 93 ISO 27001 Annex A controls, included, inherited or excluded, with reasons |
+| [I-iso-42001-applicability.md](./I-iso-42001-applicability.md) | All 38 ISO/IEC 42001 Annex A controls, and the guardrails with no 42001 mapping |
 | [C-eu-ai-act-applicability.md](./C-eu-ai-act-applicability.md) | Article by article: applies, design target, conditional, not applicable |
 | [D-nist-ai-rmf-applicability.md](./D-nist-ai-rmf-applicability.md) | All 72 subcategories, with stated gaps |
 | [E-guardrails-specification.md](./E-guardrails-specification.md) | Each guardrail: what, where enforced, evidence, test; illustrative configuration |
